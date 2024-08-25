@@ -1,0 +1,33 @@
+#include <iostream>
+using namespace std;
+bool Collision(double xmin1, double xmax1, double ymin1, double ymax1,
+                   double xmin2, double xmax2, double ymin2, double ymax2) {
+    int overlapX,overlapY;
+    // Check for overlap
+    if(xmax1 < xmin2 || xmin1 > xmax2){
+        overlapX=0;
+    }
+    else{
+        overlapX=1;
+    }
+    if(ymax1 < ymin2 || ymin1 > ymax2){
+        overlapY=0;
+    }
+    else{
+        overlapY=1;
+    }
+    
+    return overlapX && overlapY;
+}
+
+int main() {
+    double xmin1=1,xmax1=2,ymin1=2,ymax1=3;
+    double xmin2=2,xmax2=3,ymin2=2,ymax2=3;
+
+    int collision = Collision(xmin1, xmax1, ymin1, ymax1, xmin2, xmax2, ymin2, ymax2);
+    if(collision==1)
+    cout<<"There is a Collision";
+    else
+    cout<<"There is NO Collision";
+    return 0;
+}

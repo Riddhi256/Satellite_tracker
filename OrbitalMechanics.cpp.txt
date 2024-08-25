@@ -1,0 +1,27 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+const double G = 6.67430e-11;
+double calculateOrbitalVelocity(double massCentral, double radius) {
+    return sqrt(G * massCentral / radius);
+}
+double calculateOrbitalPeriod(double massCentral, double radius) {
+    return 2 * M_PI * sqrt(pow(radius, 3) / (G * massCentral));
+}
+double calculateGravitationalForce(double mass1, double mass2, double distance) {
+    return (G * mass1 * mass2) / (distance * distance);
+}
+int main() {
+    double massCentral = 5.972e24; 
+    double radiusEarth = 6.371e6;  
+    double altitude = 500e3;
+    double mass2=1000;
+    //int distance = 150;
+    double orbitalRadius = radiusEarth + altitude;
+    double velocity = calculateOrbitalVelocity(massCentral, orbitalRadius);
+    cout << "Orbital velocity: " << velocity << " m/s" << endl;
+    double period = calculateOrbitalPeriod(massCentral, orbitalRadius);
+    cout << "Orbital period: " << period << " s" <<endl;
+     double force = calculateGravitationalForce(massCentral, mass2, orbitalRadius);
+    cout << "The gravitational force between the objects is: " << force << " N" << endl;
+}
